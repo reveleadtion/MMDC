@@ -5,3 +5,4 @@
   -Updated logo colors
   -Updated links and formatting issues
   -Mobile First Updates
+  -Combined everything into 1 javascript site
