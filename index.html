@@ -609,7 +609,99 @@
 
     .seo-blurb strong { color: var(--teal-dark); }
 
+    /* SPECTATOR HOOK */
+    .spec-hook {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      margin-bottom: 2rem;
+      border: 2px solid rgba(26,148,128,0.2);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .spec-hook-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 1.2rem;
+      background: var(--white);
+      border-right: 1px solid rgba(26,148,128,0.15);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      color: #3a4a48;
+      transition: background 0.2s;
+    }
+
+    .spec-hook-item:last-child { border-right: none; }
+    .spec-hook-item:hover { background: #edfaf8; }
+
+    .spec-hook-item strong {
+      color: var(--teal-dark);
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .spec-hook-item span { line-height: 1.3; }
+
+    /* FIRST TIMER CALLOUT */
+    .firsttimer {
+      margin-top: 2.5rem;
+      background: var(--black);
+      border-left: 6px solid var(--teal-bright);
+      padding: 2rem 2rem 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .firsttimer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 0% 50%, rgba(26,148,128,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .firsttimer-text { flex: 1; min-width: 240px; position: relative; z-index: 1; }
+
+    .firsttimer-label {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.7rem;
+      color: var(--teal-light);
+      letter-spacing: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .firsttimer-text h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      letter-spacing: 2px;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+
+    .firsttimer-text p {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.82rem;
+      color: var(--smoke-light);
+      line-height: 1.75;
+      letter-spacing: 0.5px;
+    }
+
+    .firsttimer .btn-primary { position: relative; z-index: 1; flex-shrink: 0; white-space: nowrap; }
+
     @media (max-width: 640px) {
+      .spec-hook { grid-template-columns: 1fr 1fr; }
+      .spec-hook-item:nth-child(2) { border-right: none; }
+      .spec-hook-item:nth-child(3) { border-top: 1px solid rgba(26,148,128,0.15); }
+      .spec-hook-item:nth-child(4) { border-top: 1px solid rgba(26,148,128,0.15); border-right: none; }
+      .firsttimer { flex-direction: column; gap: 1.5rem; }
       .event-card { grid-template-columns: 72px 1fr; gap: 1rem; }
       .event-card > .event-price { display: none; }
       .event-action { grid-column: 2; }
@@ -645,10 +737,10 @@
       <img src="logo.jpg" alt="Mid Michigan Drift Club" class="hero-logo">
       <p class="hero-eyebrow">✦ 2026 Season Schedule ✦</p>
       <p class="hero-sub">Jackson Speedway · Michigan</p>
-      <p class="hero-tagline">Michigan's grassroots drift scene — free to watch, unforgettable to witness</p>
+      <p class="hero-tagline">Free to watch. Free to park. Impossible to forget.</p>
       <div class="hero-cta">
         <a href="#events" class="btn btn-primary">View Schedule</a>
-        <a href="https://www.facebook.com/mmdc0/" target="_blank" class="btn btn-outline">Join on Facebook</a>
+        <a href="about.html" class="btn btn-outline">New Here? Start Here</a>
       </div>
     </div>
   </section>
@@ -656,6 +748,14 @@
   <div class="section" id="events">
     <p class="section-label">✦ 2026 Schedule</p>
     <h2 class="section-title">Upcoming Events</h2>
+
+    <!-- SPECTATOR HOOK -->
+    <div class="spec-hook">
+      <div class="spec-hook-item">🎟️ <span><strong>Spectators always free</strong> — no ticket, no wristband</span></div>
+      <div class="spec-hook-item">🅿️ <span><strong>Free parking</strong> at Jackson Speedway</span></div>
+      <div class="spec-hook-item">🔓 <span><strong>Open paddock</strong> — walk up to the cars</span></div>
+      <div class="spec-hook-item">👨‍👩‍👧 <span><strong>All ages welcome</strong> — great for families</span></div>
+    </div>
 
     <div class="events-grid">
 
@@ -769,7 +869,17 @@
         <div class="venue-name">Jackson Speedway — Our Home Track</div>
         <div class="venue-addr">3363 Page Ave, Jackson, Michigan</div>
       </div>
-      <a href="https://maps.app.goo.gl/BPFtZWRAfPKHevpE9" target="_blank" class="btn btn-outline" style="margin-left:auto;">Get Directions</a>
+      <a href="https://maps.google.com/?q=3363+Page+Ave+Jackson+MI" target="_blank" class="btn btn-outline" style="margin-left:auto;">Get Directions</a>
+    </div>
+
+    <!-- FIRST TIMER CALLOUT -->
+    <div class="firsttimer">
+      <div class="firsttimer-text">
+        <div class="firsttimer-label">✦ Never Been to a Drift Event? ✦</div>
+        <h3>You'll wonder why it took you this long.</h3>
+        <p>Real cars. Real drivers. Smoke so thick you can smell it from the parking lot. No racing experience needed to enjoy this — just show up and prepare to be loud.</p>
+      </div>
+      <a href="about.html" class="btn btn-primary">What to Expect →</a>
     </div>
 
     <!-- SEO copy block — keyword-rich, human-readable -->
