@@ -312,14 +312,220 @@
       box-shadow: 6px 6px 0 var(--teal-dark);
     }
 
-    /* CTA BAND */
+    /* AUDIENCE SPLIT */
+    .audience-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 4px solid var(--teal);
+      border-bottom: 4px solid var(--teal);
+    }
+
+    .audience-card {
+      padding: 3.5rem 3rem;
+      position: relative;
+    }
+
+    .audience-card.spectator {
+      background: var(--black);
+      border-right: 2px solid var(--teal-dark);
+    }
+
+    .audience-card.driver {
+      background: #0f1e1a;
+    }
+
+    .audience-tag {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.7rem;
+      letter-spacing: 5px;
+      color: var(--teal-light);
+      margin-bottom: 1rem;
+    }
+
+    .audience-card h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: 2px;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .audience-card p {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.88rem;
+      line-height: 1.85;
+      color: var(--smoke-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .audience-card p strong { color: var(--teal-bright); }
+
+    .audience-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .audience-list li {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--smoke-light);
+      padding: 0.45rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      letter-spacing: 0.5px;
+    }
+
+    .audience-list li:last-child { border-bottom: none; }
+
+    .btn-audience {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      padding: 0.7rem 1.8rem;
+      background: var(--teal);
+      color: var(--white);
+      text-decoration: none;
+      border: 2px solid var(--teal);
+      box-shadow: 4px 4px 0 var(--teal-dark);
+      transition: all 0.2s;
+    }
+
+    .btn-audience:hover {
+      background: var(--teal-dark);
+      transform: translate(-2px,-2px);
+      box-shadow: 6px 6px 0 var(--teal-dark);
+    }
+
+    .btn-audience-dark {
+      background: transparent;
+      border-color: var(--teal-light);
+      box-shadow: 4px 4px 0 rgba(26,148,128,0.3);
+    }
+
+    .btn-audience-dark:hover {
+      background: var(--teal-light);
+      color: var(--black);
+    }
+
+    /* EXPECT GRID */
+    .expect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .expect-card {
+      background: var(--white);
+      border: 2px solid rgba(10,22,18,0.1);
+      border-top: none;
+      padding: 1.8rem 1.5rem 1.8rem;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .expect-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-bright));
+    }
+
+    .expect-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.09);
+    }
+
+    .expect-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--teal-bright);
+      opacity: 0.35;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .expect-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      color: var(--black);
+      margin-bottom: 0.6rem;
+    }
+
+    .expect-card p {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.82rem;
+      line-height: 1.75;
+      color: var(--smoke);
+    }
+
+    /* DUAL CTA */
+    .dual-cta {
+      display: grid;
+      grid-template-columns: 1fr 2px 1fr;
+      background: var(--black);
+      border-top: 4px solid var(--teal);
+    }
+
+    .dual-cta-half {
+      padding: 4rem 3rem;
+      text-align: center;
+    }
+
+    .dual-cta-divider {
+      background: var(--teal-dark);
+      opacity: 0.5;
+    }
+
+    .dual-cta-eyebrow {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.72rem;
+      color: var(--teal-light);
+      letter-spacing: 5px;
+      margin-bottom: 0.8rem;
+    }
+
+    .dual-cta-half h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: 4px;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .dual-cta-half p {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.88rem;
+      color: var(--smoke);
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+      line-height: 1.6;
+    }
+
+    /* CTA BAND (kept for fallback) */
     .cta-band { background: var(--black); border-top: 4px solid var(--teal); border-bottom: 4px solid var(--teal-bright); padding: 4rem 2rem; text-align: center; }
     .cta-band .eyebrow { font-family: 'Special Elite', cursive; font-size: 0.78rem; color: var(--teal-light); letter-spacing: 5px; margin-bottom: 1rem; }
     .cta-band h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 7vw, 4.5rem); letter-spacing: 4px; color: var(--white); line-height: 1; margin-bottom: 1.5rem; }
     .cta-band h2 span { color: var(--teal-bright); }
     .cta-band p { font-family: 'Special Elite', cursive; font-size: 0.9rem; color: var(--smoke); margin-bottom: 2rem; letter-spacing: 1px; }
-
     .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 768px) {
+      .audience-split { grid-template-columns: 1fr; }
+      .audience-card.spectator { border-right: none; border-bottom: 2px solid var(--teal-dark); }
+      .audience-card { padding: 2.5rem 1.5rem; }
+      .dual-cta { grid-template-columns: 1fr; }
+      .dual-cta-divider { display: none; }
+      .dual-cta-half { padding: 3rem 1.5rem; border-bottom: 2px solid var(--teal-dark); }
+      .dual-cta-half:last-child { border-bottom: none; }
+    }
 
     .btn { display: inline-block; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 3px; padding: 0.75rem 2.2rem; border: 2px solid transparent; cursor: pointer; text-decoration: none; transition: all 0.2s; }
     .btn-primary { background: var(--teal); color: var(--white); border-color: var(--teal); box-shadow: 4px 4px 0 var(--teal-dark); }
@@ -327,7 +533,6 @@
     .btn-outline { background: transparent; color: var(--white); border-color: var(--teal-light); box-shadow: 4px 4px 0 rgba(26,148,128,0.3); }
     .btn-outline:hover { background: var(--teal-light); color: var(--black); transform: translate(-2px,-2px); }
 
-    /* FOOTER */
     footer { background: var(--black); border-top: 4px solid var(--teal); padding: 3rem 2rem; text-align: center; }
     .footer-logo-img { height: 80px; width: auto; mix-blend-mode: lighten; filter: brightness(1.05); margin-bottom: 0.75rem; }
     .footer-tagline { font-family: 'Special Elite', cursive; font-size: 0.75rem; color: var(--smoke); letter-spacing: 3px; margin-bottom: 1.5rem; }
@@ -364,41 +569,80 @@
 
   <div class="page-header">
     <img src="logo.jpg" alt="Mid Michigan Drift Club">
-    <p class="eyebrow">✦ Who We Are ✦</p>
+    <p class="eyebrow">✦ Michigan's Grassroots Drift Scene ✦</p>
     <h1>About <span>MMDC</span></h1>
   </div>
 
+  <!-- WHO WE ARE -->
   <div class="section">
     <p class="section-label">✦ Our Story</p>
-    <h2 class="section-title">Mid Michigan Drift Club</h2>
-
+    <h2 class="section-title">Built for the Love of the Slide</h2>
     <div class="prose">
       <p>
-        The <strong>Mid Michigan Drift Club</strong> is a community-driven motorsports club built for drivers and fans who share a passion for the art of drifting. Based in the heart of Michigan, we call <strong>Jackson Speedway</strong> our home track — one of the premier venues in the region for wheel-to-wheel action, tire smoke, and high-angle entries.
+        The <strong>Mid Michigan Drift Club</strong> is Michigan's most active grassroots drift community — and we run it the right way. No velvet ropes, no gatekeeping. Just real cars, real drivers, and real people standing at a fence watching something they've never seen this close before.
       </p>
       <p>
-        Whether you're strapping into a purpose-built drift car for the first time or you're a seasoned competitor chasing angle, we welcome everyone. Our events range from beginner clinics to full competition days, so there's always a way to get involved — no matter where you are in your drift journey.
-      </p>
-      <p>
-        We're more than just an event series. MMDC is a community. You'll find us wrenching in the pits, sharing tips in the Facebook group, and cheering each other on from the track wall. Come out, turn some laps, and lay down some rubber with us.
+        We run a full seven-event season at <strong>Jackson Speedway</strong>, just off Page Ave in Jackson, MI — easy to get to from Lansing, Ann Arbor, or anywhere in between. Whether you're coming to watch for the first time or you've been chasing angle for years, there's a place for you here.
       </p>
     </div>
+  </div>
 
-    <div class="pillars">
-      <div class="pillar">
-        <div class="icon">🔰</div>
-        <h3>Beginner Friendly</h3>
-        <p>Our clinic days are designed for new drivers looking to learn the fundamentals in a safe, organized environment.</p>
+  <!-- AUDIENCE SPLIT -->
+  <div class="audience-split">
+    <div class="audience-card spectator">
+      <div class="audience-tag">✦ For Spectators ✦</div>
+      <h2>You've Never Seen Anything Like This</h2>
+      <p>Drifting is the loudest, smokiest, most sideways thing happening in Michigan on a weekend — and you can watch it all for <strong>free</strong>. Walk the paddock, get close to the cars, and watch drivers push the limits in ways that will genuinely surprise you.</p>
+      <ul class="audience-list">
+        <li>🎟️ Free spectator admission at most events</li>
+        <li>📍 Jackson Speedway — easy access, free parking</li>
+        <li>🔥 Tire smoke, close proximity, open paddock access</li>
+        <li>👨‍👩‍👧 Great for families, car enthusiasts, and first-timers</li>
+        <li>📸 Perfect for photos — the action happens right in front of you</li>
+      </ul>
+      <a href="index.html" class="btn-audience">See the 2026 Schedule →</a>
+    </div>
+
+    <div class="audience-card driver">
+      <div class="audience-tag">✦ For Drivers ✦</div>
+      <h2>Get Your Car Sideways in Michigan</h2>
+      <p>From first-time clinic students to seasoned competitors, MMDC events are built to give you seat time in a structured, welcoming environment. Our March Clinic is the perfect on-ramp — and the season gets progressively more competitive from there.</p>
+      <ul class="audience-list">
+        <li>🔰 Beginner clinics with experienced instruction</li>
+        <li>🏎️ Open to all RWD drift builds — no gatekeeping</li>
+        <li>🛠️ Open paddock — wrench alongside other builders</li>
+        <li>📅 7 events from March through November</li>
+        <li>🤝 A community that actually helps each other improve</li>
+      </ul>
+      <a href="https://driftmaps.com/" target="_blank" class="btn-audience btn-audience-dark">Register on DriftMaps →</a>
+    </div>
+  </div>
+
+  <!-- SPECTATOR EXPLAINER -->
+  <div class="section">
+    <p class="section-label">✦ First Time At A Drift Event?</p>
+    <h2 class="section-title">Here's What to Expect</h2>
+
+    <div class="expect-grid">
+      <div class="expect-card">
+        <div class="expect-num">01</div>
+        <h3>Show Up & Park</h3>
+        <p>Jackson Speedway has plenty of free parking. Spectators walk right in — no registration, no wristband, no hassle. Just show up.</p>
       </div>
-      <div class="pillar">
-        <div class="icon">🏁</div>
-        <h3>Home Track</h3>
-        <p>Jackson Speedway — 3363 Page Ave, Jackson, MI. A proper circuit with room to push and a great crowd to cheer you on.</p>
+      <div class="expect-card">
+        <div class="expect-num">02</div>
+        <h3>Walk the Paddock</h3>
+        <p>Unlike stadium motorsport, grassroots drifting has an open paddock. You can walk right up to the cars, talk to drivers, and see what makes a drift build tick.</p>
       </div>
-      <div class="pillar">
-        <div class="icon">🤝</div>
-        <h3>Community First</h3>
-        <p>We're a club run by enthusiasts, for enthusiasts. Join the Facebook group to connect between events.</p>
+      <div class="expect-card">
+        <div class="expect-num">03</div>
+        <h3>Find Your Spot</h3>
+        <p>The action at Jackson Speedway happens close. Find a spot at the fence near a corner and watch cars come in at full lock — loud, smoky, and completely controlled chaos.</p>
+      </div>
+      <div class="expect-card">
+        <div class="expect-num">04</div>
+        <h3>Bring Your Friends</h3>
+        <p>Drifting is one of those things where the reaction from first-timers never gets old. Bring someone who's never seen it — it won't disappoint.</p>
       </div>
     </div>
   </div>
@@ -416,13 +660,20 @@
     </div>
   </div>
 
-  <div class="cta-band">
-    <p class="eyebrow">✦ Get Involved ✦</p>
-    <h2>Ready to <span>Slide?</span></h2>
-    <p>Check the schedule, grab a ticket, and meet us at Jackson Speedway.</p>
-    <div class="cta-buttons">
-      <a href="index.html" class="btn btn-primary">View 2026 Events</a>
-      <a href="https://www.facebook.com/mmdc0/" target="_blank" class="btn btn-outline">Find Us on Facebook</a>
+  <!-- DUAL CTA -->
+  <div class="dual-cta">
+    <div class="dual-cta-half watch">
+      <div class="dual-cta-eyebrow">✦ Spectators ✦</div>
+      <h2>Come Watch</h2>
+      <p>Free admission. Open paddock. Jackson Speedway all season long.</p>
+      <a href="index.html" class="btn btn-primary">See the Schedule</a>
+    </div>
+    <div class="dual-cta-divider"></div>
+    <div class="dual-cta-half drive">
+      <div class="dual-cta-eyebrow">✦ Drivers ✦</div>
+      <h2>Come Drive</h2>
+      <p>Register for a clinic or event and get your car on track with us.</p>
+      <a href="https://driftmaps.com/" target="_blank" class="btn btn-outline">Register on DriftMaps</a>
     </div>
   </div>
 
