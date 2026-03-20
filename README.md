@@ -4,3 +4,4 @@
   -Updated SEO
   -Updated logo colors
   -Updated links and formatting issues
+  -Mobile First Updates
