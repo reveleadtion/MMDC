@@ -148,6 +148,110 @@
     .pillar h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 2px; color: var(--black); margin-bottom: 0.5rem; }
     .pillar p { font-family: 'Special Elite', cursive; font-size: 0.82rem; line-height: 1.7; color: var(--smoke); }
 
+    /* SEASON BANNER */
+    .season-banner {
+      background: var(--black);
+      border-top: 4px solid var(--teal);
+      border-bottom: 4px solid var(--teal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .season-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 0% 50%, rgba(26,148,128,0.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 50%, rgba(26,148,128,0.12) 0%, transparent 50%),
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px, transparent 39px,
+          rgba(255,255,255,0.012) 39px, rgba(255,255,255,0.012) 40px
+        );
+      pointer-events: none;
+    }
+
+    /* checkered strips top & bottom */
+    .season-banner::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 8px;
+      background-image: repeating-linear-gradient(
+        90deg,
+        var(--teal-dark) 0px, var(--teal-dark) 8px,
+        var(--black) 8px, var(--black) 16px
+      );
+      opacity: 0.5;
+    }
+
+    .season-banner-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+
+    .season-icon {
+      font-size: 3rem;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 12px rgba(46,216,190,0.4));
+    }
+
+    .season-text { flex: 1; min-width: 200px; }
+
+    .season-label {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.72rem;
+      color: var(--teal-light);
+      letter-spacing: 5px;
+      margin-bottom: 0.3rem;
+    }
+
+    .season-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: 3px;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .season-sub {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.82rem;
+      color: var(--smoke);
+      letter-spacing: 2px;
+      margin-top: 0.4rem;
+    }
+
+    .btn-season {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 3px;
+      padding: 0.8rem 2rem;
+      background: var(--teal);
+      color: var(--white);
+      border: 2px solid var(--teal);
+      text-decoration: none;
+      box-shadow: 4px 4px 0 var(--teal-dark);
+      transition: all 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-season:hover {
+      background: var(--teal-dark);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 var(--teal-dark);
+    }
+
     /* CTA BAND */
     .cta-band { background: var(--black); border-top: 4px solid var(--teal); border-bottom: 4px solid var(--teal-bright); padding: 4rem 2rem; text-align: center; }
     .cta-band .eyebrow { font-family: 'Special Elite', cursive; font-size: 0.78rem; color: var(--teal-light); letter-spacing: 5px; margin-bottom: 1rem; }
@@ -236,11 +340,19 @@
         <h3>Community First</h3>
         <p>We're a club run by enthusiasts, for enthusiasts. Join the Facebook group to connect between events.</p>
       </div>
-      <div class="pillar">
-        <div class="icon">📅</div>
-        <h3>Full 2026 Season</h3>
-        <p>Seven events from March through November — plenty of chances to get on track and improve your craft.</p>
+    </div>
+  </div>
+
+  <!-- SEASON BANNER -->
+  <div class="season-banner">
+    <div class="season-banner-inner">
+      <div class="season-icon">📅</div>
+      <div class="season-text">
+        <div class="season-label">✦ 2026 Season ✦</div>
+        <div class="season-title">Full Season — 7 Events</div>
+        <div class="season-sub">March through November · Jackson Speedway · Michigan</div>
       </div>
+      <a href="index.html" class="btn btn-season">View Full Schedule</a>
     </div>
   </div>
 
