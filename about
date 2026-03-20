@@ -8,23 +8,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --cream: #f5efe0;
-      --parchment: #e8dcc8;
-      --black: #1a1208;
-      --deep: #231a0a;
-      --red: #c0260e;
-      --red-dark: #8c1a08;
-      --gold: #c8922a;
-      --gold-light: #e8b84b;
-      --rust: #9e4a1a;
-      --tire: #2a2416;
-      --smoke: #7a7060;
+      --cream: #f2f2f2;
+      --parchment: #e2e8e8;
+      --black: #0e1410;
+      --deep: #0a1612;
+      --teal: #1a9480;
+      --teal-dark: #0d6b5c;
+      --teal-light: #26bfa8;
+      --teal-bright: #2ed8be;
+      --smoke: #8a9a98;
+      --smoke-light: #b0bfbd;
+      --white: #ffffff;
+      --off-white: #f8fbfb;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background-color: var(--cream);
+      background-color: var(--off-white);
       color: var(--black);
       font-family: 'Barlow Condensed', sans-serif;
       overflow-x: hidden;
@@ -34,101 +35,46 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 1000;
-      opacity: 0.5;
+      opacity: 0.4;
     }
 
     /* NAV */
-    header {
-      background-color: var(--black);
-      border-bottom: 4px solid var(--red);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+    header { background-color: var(--black); border-bottom: 4px solid var(--teal); position: sticky; top: 0; z-index: 100; }
 
-    nav {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2rem;
-      height: 64px;
-    }
+    nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 70px; }
 
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.9rem;
-      color: var(--cream);
-      letter-spacing: 3px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-logo img { height: 52px; width: auto; mix-blend-mode: lighten; filter: brightness(1.05); }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-text .top { font-family: 'Special Elite', cursive; font-size: 0.65rem; letter-spacing: 3px; color: var(--smoke-light); }
+    .nav-logo-text .main { font-family: 'Bebas Neue', sans-serif; font-size: 1.35rem; letter-spacing: 3px; color: var(--white); }
+    .nav-logo-text .main span { color: var(--teal-light); }
 
-    .nav-logo span.accent { color: var(--red); }
-
-    .nav-logo .badge {
-      background: var(--red);
-      color: var(--cream);
-      font-size: 0.55rem;
-      font-family: 'Special Elite', cursive;
-      letter-spacing: 1px;
-      padding: 2px 6px;
-      border-radius: 2px;
-      vertical-align: middle;
-      margin-left: 4px;
-      position: relative;
-      top: -2px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      color: var(--parchment);
-      text-decoration: none;
-      position: relative;
-      transition: color 0.2s;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--red);
-      transition: width 0.25s ease;
-    }
-
-    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 2px; color: var(--smoke-light); text-decoration: none; position: relative; transition: color 0.2s; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--teal); transition: width 0.25s ease; }
+    .nav-links a:hover { color: var(--teal-bright); }
     .nav-links a:hover::after { width: 100%; }
-    .nav-links a.active { color: var(--gold-light); }
+    .nav-links a.active { color: var(--teal-bright); }
     .nav-links a.active::after { width: 100%; }
 
     /* PAGE HEADER */
     .page-header {
       background-color: var(--deep);
       background-image:
-        radial-gradient(ellipse at 30% 50%, rgba(192,38,14,0.15) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 20%, rgba(200,146,42,0.08) 0%, transparent 50%);
-      padding: 5rem 2rem 4rem;
+        radial-gradient(ellipse at 30% 50%, rgba(26,148,128,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 20%, rgba(26,148,128,0.08) 0%, transparent 50%);
+      padding: 4rem 2rem 3.5rem;
       text-align: center;
-      border-bottom: 6px solid var(--gold);
+      border-bottom: 6px solid var(--teal);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .page-header::after {
@@ -136,49 +82,38 @@
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 14px;
-      background-image: repeating-linear-gradient(
-        90deg,
-        var(--black) 0px, var(--black) 14px,
-        var(--cream) 14px, var(--cream) 28px
-      );
-      opacity: 0.25;
+      background-image: repeating-linear-gradient(90deg, var(--black) 0px, var(--black) 14px, var(--white) 14px, var(--white) 28px);
+      opacity: 0.18;
     }
 
-    .page-header .eyebrow {
-      font-family: 'Special Elite', cursive;
-      font-size: 0.8rem;
-      color: var(--gold);
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
+    .page-header img {
+      width: min(200px, 50vw);
+      height: auto;
+      mix-blend-mode: lighten;
+      filter: brightness(1.08) drop-shadow(0 4px 20px rgba(26,148,128,0.4));
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.7s ease both;
     }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .page-header .eyebrow { font-family: 'Special Elite', cursive; font-size: 0.8rem; color: var(--teal-light); letter-spacing: 5px; margin-bottom: 0.5rem; }
 
     .page-header h1 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 10vw, 6.5rem);
+      font-size: clamp(3rem, 9vw, 5.5rem);
       line-height: 0.9;
-      color: var(--cream);
+      color: var(--white);
       letter-spacing: 4px;
-      text-shadow: 4px 4px 0 var(--red-dark);
+      text-shadow: 3px 3px 0 var(--teal-dark);
     }
 
-    .page-header h1 span { color: var(--red); }
+    .page-header h1 span { color: var(--teal-bright); }
 
-    /* CONTENT SECTIONS */
-    .section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 5rem 2rem;
-    }
+    /* CONTENT */
+    .section { max-width: 900px; margin: 0 auto; padding: 5rem 2rem; }
 
-    .section-label {
-      font-family: 'Special Elite', cursive;
-      font-size: 0.75rem;
-      color: var(--red);
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
+    .section-label { font-family: 'Special Elite', cursive; font-size: 0.75rem; color: var(--teal); letter-spacing: 6px; margin-bottom: 0.5rem; }
 
     .section-title {
       font-family: 'Bebas Neue', sans-serif;
@@ -187,222 +122,60 @@
       color: var(--black);
       letter-spacing: 3px;
       margin-bottom: 2rem;
-      position: relative;
       display: inline-block;
     }
 
-    .section-title::after {
-      content: '';
-      display: block;
-      height: 4px;
-      width: 50%;
-      background: var(--red);
-      margin-top: 0.4rem;
-    }
+    .section-title::after { content: ''; display: block; height: 4px; width: 50%; background: var(--teal); margin-top: 0.4rem; }
 
-    .prose {
-      font-family: 'Special Elite', cursive;
-      font-size: 1rem;
-      line-height: 1.85;
-      color: #3a2e1e;
-      max-width: 700px;
-    }
+    .prose { font-family: 'Special Elite', cursive; font-size: 1rem; line-height: 1.85; color: #1e2e2c; max-width: 700px; }
+    .prose p + p { margin-top: 1.2rem; }
+    .prose strong { font-family: 'Bebas Neue', sans-serif; font-size: 1.2em; letter-spacing: 2px; color: var(--black); }
 
-    .prose p + p {
-      margin-top: 1.2rem;
-    }
-
-    .prose strong {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.2em;
-      letter-spacing: 2px;
-      color: var(--black);
-    }
-
-    /* PILLARS / WHAT WE OFFER */
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
+    /* PILLARS */
+    .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
 
     .pillar {
-      background: var(--parchment);
-      border: 2px solid rgba(26,18,8,0.12);
-      border-top: 5px solid var(--gold);
+      background: var(--white);
+      border: 2px solid rgba(10,22,18,0.1);
+      border-top: 5px solid var(--teal);
       padding: 1.8rem 1.5rem;
-      position: relative;
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .pillar:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    }
+    .pillar:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
 
-    .pillar .icon {
-      font-size: 2rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .pillar h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.3rem;
-      letter-spacing: 2px;
-      color: var(--black);
-      margin-bottom: 0.5rem;
-    }
-
-    .pillar p {
-      font-family: 'Special Elite', cursive;
-      font-size: 0.82rem;
-      line-height: 1.7;
-      color: var(--smoke);
-    }
+    .pillar .icon { font-size: 2rem; margin-bottom: 0.8rem; }
+    .pillar h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 2px; color: var(--black); margin-bottom: 0.5rem; }
+    .pillar p { font-family: 'Special Elite', cursive; font-size: 0.82rem; line-height: 1.7; color: var(--smoke); }
 
     /* CTA BAND */
-    .cta-band {
-      background: var(--black);
-      border-top: 4px solid var(--red);
-      border-bottom: 4px solid var(--gold);
-      padding: 4rem 2rem;
-      text-align: center;
-    }
+    .cta-band { background: var(--black); border-top: 4px solid var(--teal); border-bottom: 4px solid var(--teal-bright); padding: 4rem 2rem; text-align: center; }
+    .cta-band .eyebrow { font-family: 'Special Elite', cursive; font-size: 0.78rem; color: var(--teal-light); letter-spacing: 5px; margin-bottom: 1rem; }
+    .cta-band h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 7vw, 4.5rem); letter-spacing: 4px; color: var(--white); line-height: 1; margin-bottom: 1.5rem; }
+    .cta-band h2 span { color: var(--teal-bright); }
+    .cta-band p { font-family: 'Special Elite', cursive; font-size: 0.9rem; color: var(--smoke); margin-bottom: 2rem; letter-spacing: 1px; }
 
-    .cta-band .eyebrow {
-      font-family: 'Special Elite', cursive;
-      font-size: 0.78rem;
-      color: var(--gold);
-      letter-spacing: 5px;
-      margin-bottom: 1rem;
-    }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-    .cta-band h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 7vw, 4.5rem);
-      letter-spacing: 4px;
-      color: var(--cream);
-      line-height: 1;
-      margin-bottom: 1.5rem;
-    }
-
-    .cta-band h2 span { color: var(--red); }
-
-    .cta-band p {
-      font-family: 'Special Elite', cursive;
-      font-size: 0.9rem;
-      color: var(--smoke);
-      margin-bottom: 2rem;
-      letter-spacing: 1px;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
-      letter-spacing: 3px;
-      padding: 0.75rem 2.2rem;
-      border: 2px solid transparent;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: var(--red);
-      color: var(--cream);
-      border-color: var(--red);
-      box-shadow: 4px 4px 0 var(--red-dark);
-    }
-    .btn-primary:hover {
-      background: var(--red-dark);
-      transform: translate(-2px,-2px);
-      box-shadow: 6px 6px 0 var(--red-dark);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--cream);
-      border-color: var(--gold);
-      box-shadow: 4px 4px 0 rgba(200,146,42,0.3);
-    }
-    .btn-outline:hover {
-      background: var(--gold);
-      color: var(--black);
-      transform: translate(-2px,-2px);
-    }
-
-    /* DIVIDER */
-    .rule {
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      opacity: 0.35;
-      margin: 0;
-    }
+    .btn { display: inline-block; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 3px; padding: 0.75rem 2.2rem; border: 2px solid transparent; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+    .btn-primary { background: var(--teal); color: var(--white); border-color: var(--teal); box-shadow: 4px 4px 0 var(--teal-dark); }
+    .btn-primary:hover { background: var(--teal-dark); transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--teal-dark); }
+    .btn-outline { background: transparent; color: var(--white); border-color: var(--teal-light); box-shadow: 4px 4px 0 rgba(26,148,128,0.3); }
+    .btn-outline:hover { background: var(--teal-light); color: var(--black); transform: translate(-2px,-2px); }
 
     /* FOOTER */
-    footer {
-      background: var(--black);
-      border-top: 4px solid var(--red);
-      padding: 2.5rem;
-      text-align: center;
-    }
-
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      letter-spacing: 4px;
-      color: var(--cream);
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-logo span { color: var(--red); }
-
-    .footer-tagline {
-      font-family: 'Special Elite', cursive;
-      font-size: 0.75rem;
-      color: var(--smoke);
-      letter-spacing: 3px;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      list-style: none;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links a {
-      font-family: 'Bebas Neue', sans-serif;
-      letter-spacing: 2px;
-      color: var(--parchment);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--gold); }
-
-    .footer-copy {
-      font-family: 'Special Elite', cursive;
-      font-size: 0.7rem;
-      color: var(--smoke);
-    }
+    footer { background: var(--black); border-top: 4px solid var(--teal); padding: 3rem 2rem; text-align: center; }
+    .footer-logo-img { height: 80px; width: auto; mix-blend-mode: lighten; filter: brightness(1.05); margin-bottom: 0.75rem; }
+    .footer-tagline { font-family: 'Special Elite', cursive; font-size: 0.75rem; color: var(--smoke); letter-spacing: 3px; margin-bottom: 1.5rem; }
+    .footer-links { display: flex; gap: 2rem; justify-content: center; list-style: none; margin-bottom: 1.5rem; }
+    .footer-links a { font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; color: var(--smoke-light); text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--teal-bright); }
+    .footer-copy { font-family: 'Special Elite', cursive; font-size: 0.7rem; color: var(--smoke); }
 
     @media (max-width: 640px) {
       nav { padding: 0 1rem; }
       .nav-links { gap: 1.2rem; }
+      .nav-logo-text { display: none; }
     }
   </style>
 </head>
@@ -411,8 +184,11 @@
   <header>
     <nav>
       <a class="nav-logo" href="index.html">
-        MID<span class="accent">MICH</span> DRIFT
-        <span class="badge">MMDC</span>
+        <img src="logo.jpg" alt="MMDC Logo">
+        <div class="nav-logo-text">
+          <span class="top">Est. Jackson Speedway</span>
+          <span class="main">Mid<span>Mich</span> Drift</span>
+        </div>
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Events</a></li>
@@ -422,13 +198,12 @@
     </nav>
   </header>
 
-  <!-- PAGE HEADER -->
   <div class="page-header">
+    <img src="logo.jpg" alt="Mid Michigan Drift Club">
     <p class="eyebrow">✦ Who We Are ✦</p>
     <h1>About <span>MMDC</span></h1>
   </div>
 
-  <!-- WHO WE ARE -->
   <div class="section">
     <p class="section-label">✦ Our Story</p>
     <h2 class="section-title">Mid Michigan Drift Club</h2>
@@ -453,8 +228,8 @@
       </div>
       <div class="pillar">
         <div class="icon">🏁</div>
-        <h3>Home Track: Jackson Speedway</h3>
-        <p>3363 Page Ave, Jackson, MI. A proper circuit with room to push — and a great crowd to cheer you on.</p>
+        <h3>Home Track</h3>
+        <p>Jackson Speedway — 3363 Page Ave, Jackson, MI. A proper circuit with room to push and a great crowd to cheer you on.</p>
       </div>
       <div class="pillar">
         <div class="icon">🤝</div>
@@ -469,9 +244,6 @@
     </div>
   </div>
 
-  <div class="rule"></div>
-
-  <!-- CTA BAND -->
   <div class="cta-band">
     <p class="eyebrow">✦ Get Involved ✦</p>
     <h2>Ready to <span>Slide?</span></h2>
@@ -482,9 +254,8 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">Mid<span>Mich</span> Drift Club</div>
+    <img src="logo.jpg" alt="Mid Michigan Drift Club" class="footer-logo-img">
     <p class="footer-tagline">✦ MMDC · Jackson Speedway · Michigan ✦</p>
     <ul class="footer-links">
       <li><a href="index.html">Events</a></li>
