@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mid Michigan Drift Club</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f5efe0;
+      --parchment: #e8dcc8;
+      --black: #1a1208;
+      --deep: #231a0a;
+      --red: #c0260e;
+      --red-dark: #8c1a08;
+      --gold: #c8922a;
+      --gold-light: #e8b84b;
+      --rust: #9e4a1a;
+      --tire: #2a2416;
+      --smoke: #7a7060;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--black);
+      font-family: 'Barlow Condensed', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE TEXTURE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.5;
+    }
+
+    /* ─── HEADER / NAV ─── */
+    header {
+      background-color: var(--black);
+      border-bottom: 4px solid var(--red);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem;
+      color: var(--cream);
+      letter-spacing: 3px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo span.accent {
+      color: var(--red);
+    }
+
+    .nav-logo .badge {
+      background: var(--red);
+      color: var(--cream);
+      font-size: 0.55rem;
+      font-family: 'Special Elite', cursive;
+      letter-spacing: 1px;
+      padding: 2px 6px;
+      border-radius: 2px;
+      vertical-align: middle;
+      margin-left: 4px;
+      position: relative;
+      top: -2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: var(--parchment);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--red);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--gold-light); }
+    .nav-links a.active::after { width: 100%; }
+
+    /* ─── HERO ─── */
+    .hero {
+      background-color: var(--deep);
+      background-image:
+        radial-gradient(ellipse at 70% 40%, rgba(192,38,14,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 80%, rgba(200,146,42,0.10) 0%, transparent 50%),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 39px,
+          rgba(255,255,255,0.018) 39px,
+          rgba(255,255,255,0.018) 40px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 39px,
+          rgba(255,255,255,0.015) 39px,
+          rgba(255,255,255,0.015) 40px
+        );
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 6px solid var(--gold);
+    }
+
+    /* Checkered flag strip */
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 14px;
+      background-image: repeating-linear-gradient(
+        90deg,
+        var(--black) 0px, var(--black) 14px,
+        var(--cream) 14px, var(--cream) 28px
+      );
+      opacity: 0.3;
+    }
+
+    .hero-skid {
+      position: absolute;
+      bottom: 20px;
+      left: -5%;
+      width: 110%;
+      height: 80px;
+      background: repeating-linear-gradient(
+        92deg,
+        transparent 0px,
+        transparent 60px,
+        rgba(0,0,0,0.35) 60px,
+        rgba(0,0,0,0.35) 68px
+      );
+      transform: skewX(-8deg);
+      opacity: 0.5;
+    }
+
+    .hero-content {
+      text-align: center;
+      z-index: 2;
+      padding: 2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.85rem;
+      color: var(--gold);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.5rem, 12vw, 9rem);
+      line-height: 0.88;
+      color: var(--cream);
+      letter-spacing: 4px;
+      text-shadow: 4px 4px 0px var(--red-dark), 8px 8px 24px rgba(0,0,0,0.6);
+    }
+
+    .hero-title .red { color: var(--red); }
+
+    .hero-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+      color: var(--gold);
+      letter-spacing: 8px;
+      margin-top: 0.5rem;
+    }
+
+    .hero-tagline {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.9rem;
+      color: var(--smoke);
+      margin-top: 1.2rem;
+      letter-spacing: 2px;
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 3px;
+      padding: 0.75rem 2.2rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--cream);
+      border-color: var(--red);
+      box-shadow: 4px 4px 0 var(--red-dark);
+    }
+    .btn-primary:hover {
+      background: var(--red-dark);
+      transform: translate(-2px,-2px);
+      box-shadow: 6px 6px 0 var(--red-dark);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border-color: var(--gold);
+      box-shadow: 4px 4px 0 rgba(200,146,42,0.3);
+    }
+    .btn-outline:hover {
+      background: var(--gold);
+      color: var(--black);
+      transform: translate(-2px,-2px);
+      box-shadow: 6px 6px 0 rgba(200,146,42,0.5);
+    }
+
+    /* ─── SECTION WRAPPER ─── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .section-label {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.75rem;
+      color: var(--red);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      line-height: 1;
+      color: var(--black);
+      letter-spacing: 3px;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      height: 4px;
+      width: 60%;
+      background: var(--red);
+      margin-top: 0.4rem;
+    }
+
+    /* ─── EVENTS GRID ─── */
+    .events-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .event-card {
+      display: grid;
+      grid-template-columns: 90px 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--parchment);
+      border: 2px solid rgba(26,18,8,0.15);
+      border-left: 6px solid var(--red);
+      padding: 1.2rem 1.5rem;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+      overflow: hidden;
+    }
+
+    .event-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        transparent 8px,
+        rgba(26,18,8,0.018) 8px,
+        rgba(26,18,8,0.018) 9px
+      );
+      pointer-events: none;
+    }
+
+    .event-card:hover {
+      transform: translateX(4px);
+      box-shadow: -4px 0 0 var(--gold), 6px 6px 18px rgba(0,0,0,0.12);
+    }
+
+    .event-card.featured {
+      border-left-color: var(--gold);
+      background: linear-gradient(135deg, #fff8ea, var(--parchment));
+    }
+
+    .event-date-block {
+      text-align: center;
+      background: var(--black);
+      color: var(--cream);
+      padding: 0.8rem 0.5rem;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .event-date-block .month {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .event-date-block .day {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      line-height: 1;
+      color: var(--cream);
+    }
+
+    .event-date-block .multi {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8rem;
+      color: var(--smoke);
+      letter-spacing: 1px;
+    }
+
+    .event-info .event-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: var(--black);
+      line-height: 1.1;
+    }
+
+    .event-info .event-name .pill {
+      display: inline-block;
+      background: var(--red);
+      color: var(--cream);
+      font-size: 0.6rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 1px 6px;
+      border-radius: 2px;
+      vertical-align: middle;
+      position: relative;
+      top: -2px;
+      margin-left: 4px;
+    }
+
+    .event-info .event-name .pill.clinic {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .event-meta {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.78rem;
+      color: var(--smoke);
+      margin-top: 0.35rem;
+      letter-spacing: 1px;
+    }
+
+    .event-meta .venue {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      color: var(--rust);
+      font-size: 0.85rem;
+    }
+
+    .event-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: var(--smoke);
+      letter-spacing: 1px;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .event-price .price-range {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--gold);
+    }
+
+    .event-action {
+      text-align: right;
+      margin-top: 0.3rem;
+    }
+
+    .btn-ticket {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      padding: 0.4rem 1rem;
+      background: var(--red);
+      color: var(--cream);
+      text-decoration: none;
+      border: 2px solid var(--red);
+      transition: all 0.2s;
+    }
+
+    .btn-ticket:hover {
+      background: var(--cream);
+      color: var(--red);
+    }
+
+    .btn-ticket.tba {
+      background: transparent;
+      color: var(--smoke);
+      border-color: var(--smoke);
+      cursor: default;
+      font-size: 0.75rem;
+    }
+
+    /* ─── VENUE CALLOUT ─── */
+    .venue-callout {
+      margin-top: 3rem;
+      background: var(--black);
+      color: var(--cream);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      border-left: 6px solid var(--gold);
+    }
+
+    .venue-callout .icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .venue-callout .venue-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+    }
+
+    .venue-callout .venue-addr {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.8rem;
+      color: var(--smoke);
+      letter-spacing: 2px;
+      margin-top: 0.2rem;
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.4;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      border-top: 4px solid var(--red);
+      padding: 2.5rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 4px;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-logo span { color: var(--red); }
+
+    .footer-tagline {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.75rem;
+      color: var(--smoke);
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 2px;
+      color: var(--parchment);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.7rem;
+      color: var(--smoke);
+      letter-spacing: 1px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      .event-card {
+        grid-template-columns: 72px 1fr;
+        gap: 1rem;
+      }
+      .event-card > .event-price { display: none; }
+      .event-action { grid-column: 2; }
+      .venue-callout { flex-direction: column; gap: 0.75rem; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <nav>
+      <a class="nav-logo" href="index.html">
+        MID<span class="accent">MICH</span> DRIFT
+        <span class="badge">MMDC</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Events</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="https://www.facebook.com/mmdc0/" target="_blank">Facebook</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-skid"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">✦ Mid Michigan ✦ Est. Jackson Speedway ✦</p>
+      <h1 class="hero-title">DRIFT<br><span class="red">CLUB</span></h1>
+      <p class="hero-sub">2026 Season</p>
+      <p class="hero-tagline">Smoke 'em if you got 'em — Jackson Speedway, Michigan</p>
+      <div class="hero-cta">
+        <a href="#events" class="btn btn-primary">View Schedule</a>
+        <a href="https://www.facebook.com/mmdc0/" target="_blank" class="btn btn-outline">Join on Facebook</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <div class="section" id="events">
+    <p class="section-label">✦ 2026 Schedule</p>
+    <h2 class="section-title">Upcoming Events</h2>
+
+    <div class="events-grid">
+
+      <!-- March 28 -->
+      <div class="event-card featured">
+        <div class="event-date-block">
+          <div class="month">Mar</div>
+          <div class="day">28</div>
+          <div class="multi">2026</div>
+        </div>
+        <div class="event-info">
+          <div class="event-name">MMDC – March Clinic <span class="pill clinic">Clinic</span></div>
+          <div class="event-meta">
+            <span class="venue">Jackson Speedway</span> · 3363 Page Ave, Jackson
+          </div>
+        </div>
+        <div>
+          <div class="event-price">Free – $250 <span class="price-range">Entry range</span></div>
+          <div class="event-action"><a href="#" class="btn-ticket">Get Tickets</a></div>
+        </div>
+      </div>
+
+      <!-- April 11 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="month">Apr</div>
+          <div class="day">11</div>
+          <div class="multi">2026</div>
+        </div>
+        <div class="event-info">
+          <div class="event-name">MMDC – Jackson Opening Day <span class="pill">Event</span></div>
+          <div class="event-meta">
+            <span class="venue">Jackson Speedway</span> · 3363 Page Ave, Jackson
+          </div>
+        </div>
+        <div>
+          <div class="event-price">Free – $120 <span class="price-range">Entry range</span></div>
+          <div class="event-action"><a href="#" class="btn-ticket">Get Tickets</a></div>
+        </div>
+      </div>
+
+      <!-- May 23–24 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="month">May</div>
+          <div class="day">23</div>
+          <div class="multi">– 24</div>
+        </div>
+        <div class="event-info">
+          <div class="event-name">MMDC – Jackson <span class="pill">Weekend</span></div>
+          <div class="event-meta">
+            <span class="venue">Jackson Speedway</span> · 3363 Page Ave, Jackson
+          </div>
+        </div>
+        <div>
+          <div class="event-price">TBA <span class="price-range">2-day event</span></div>
+          <div class="event-action"><a href="#" class="btn-ticket tba">TBA</a></div>
+        </div>
+      </div>
+
+      <!-- June 13 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="month">Jun</div>
+          <div class="day">13</div>
+          <div class="multi">2026</div>
+        </div>
+        <div class="event-info">
+          <div class="event-name">MMDC – Jackson <span class="pill">Event</span></div>
+          <div class="event-meta">
+            <span class="venue">Jackson Speedway</span> · 3363 Page Ave, Jackson
+          </div>
+        </div>
+        <div>
+          <div class="event-price">TBA</div>
+          <div class="event-action"><a href="#" class="btn-ticket tba">TBA</a></div>
+        </div>
+      </div>
+
+      <!-- August 8 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="month">Aug</div>
+          <div class="day">8</div>
+          <div class="multi">2026</div>
+        </div>
+        <div class="event-info">
+          <div class="event-name">MMDC – Jackson <span class="pill">Event</span></div>
+          <div class="event-meta">
+            <span class="venue">Jackson Speedway</span> · 3363 Page Ave, Jackson
+          </div>
+        </div>
+        <div>
+          <div class="event-price">TBA</div>
+          <div class="event-action"><a href="#" class="btn-ticket tba">TBA</a></div>
+        </div>
+      </div>
+
+      <!-- October 10–11 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="month">Oct</div>
+          <div class="day">10</div>
+          <div class="multi">– 11</div>
+        </div>
+        <div class="event-info">
+          <div class="event-name">MMDC – Jackson <span class="pill">Weekend</span></div>
+          <div class="event-meta">
+            <span class="venue">Jackson Speedway</span> · 3363 Page Ave, Jackson
+          </div>
+        </div>
+        <div>
+          <div class="event-price">TBA <span class="price-range">2-day event</span></div>
+          <div class="event-action"><a href="#" class="btn-ticket tba">TBA</a></div>
+        </div>
+      </div>
+
+      <!-- November 14 -->
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="month">Nov</div>
+          <div class="day">14</div>
+          <div class="multi">2026</div>
+        </div>
+        <div class="event-info">
+          <div class="event-name">MMDC – Jackson <span class="pill">Event</span></div>
+          <div class="event-meta">
+            <span class="venue">Jackson Speedway</span> · 3363 Page Ave, Jackson
+          </div>
+        </div>
+        <div>
+          <div class="event-price">TBA</div>
+          <div class="event-action"><a href="#" class="btn-ticket tba">TBA</a></div>
+        </div>
+      </div>
+
+    </div><!-- /events-grid -->
+
+    <!-- VENUE CALLOUT -->
+    <div class="venue-callout">
+      <div class="icon">🏁</div>
+      <div>
+        <div class="venue-name">Jackson Speedway — Our Home Track</div>
+        <div class="venue-addr">3363 Page Ave, Jackson, Michigan</div>
+      </div>
+      <a href="https://maps.google.com/?q=3363+Page+Ave+Jackson+MI" target="_blank" class="btn btn-outline" style="margin-left:auto;">Get Directions</a>
+    </div>
+
+  </div><!-- /section -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Mid<span>Mich</span> Drift Club</div>
+    <p class="footer-tagline">✦ MMDC · Jackson Speedway · Michigan ✦</p>
+    <ul class="footer-links">
+      <li><a href="index.html">Events</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://www.facebook.com/mmdc0/" target="_blank">Facebook</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 Mid Michigan Drift Club · All rights reserved</p>
+  </footer>
+
+</body>
+</html>
