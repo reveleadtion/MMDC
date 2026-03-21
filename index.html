@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bring Your Friends. Wild to See. | Mid Michigan Drift Club | Jackson Speedway</title>
-  <meta name="description" content="Michigan's most exciting live motorsport. Watch real cars slide sideways at Jackson Speedway all season long — kids free, adults $10. 7 drift events in 2026." />
+  <meta name="description" content="Michigan's most exciting live motorsport. Watch real cars slide sideways at Jackson Speedway all season long — kids free, adults $15. 7 drift events in 2026." />
   <meta name="keywords" content="Michigan drift events, drift events Jackson Michigan, mid Michigan drift club, grassroots drifting Michigan, drift club Michigan, Jackson Speedway events, drift day Michigan, watch drifting Michigan, beginner drift clinic Michigan, drift events near me Michigan, things to do Jackson MI, motorsport events Michigan 2026" />
   <meta name="author" content="Mid Michigan Drift Club" />
   <link rel="canonical" href="https://midmichigandriftclub.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Bring Your Friends. Wild to See. | Mid Michigan Drift Club" />
-  <meta property="og:description" content="Tire smoke, sideways cars, Michigan's best grassroots drift scene — Jackson Speedway. Kids free, adults $10. 7 events in 2026." />
+  <meta property="og:description" content="Tire smoke, sideways cars, Michigan's best grassroots drift scene — Jackson Speedway. Kids free, adults $15. 7 events in 2026." />
   <meta property="og:image" content="https://midmichigandriftclub.com/logo.jpg" />
   <meta property="og:url" content="https://midmichigandriftclub.com/" />
   <meta property="og:site_name" content="Mid Michigan Drift Club" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Bring Your Friends. Wild to See. | Mid Michigan Drift Club" />
-  <meta name="twitter:description" content="Michigan's best grassroots drift events at Jackson Speedway. Kids free, adults $10. 7 events in 2026." />
+  <meta name="twitter:description" content="Michigan's best grassroots drift events at Jackson Speedway. Kids free, adults $15. 7 events in 2026." />
   <meta name="twitter:image" content="https://midmichigandriftclub.com/logo.jpg" />
   <meta name="geo.region" content="US-MI" />
   <meta name="geo.placename" content="Jackson, Michigan" />
@@ -71,15 +71,37 @@
     .footer-links a:hover{color:var(--teal-bright)}
     .footer-copy{font-family:'Special Elite',cursive;font-size:0.7rem;color:var(--smoke)}
     /* HERO */
-    .hero{background-color:var(--deep);background-image:radial-gradient(ellipse at 65% 40%,rgba(26,148,128,0.22) 0%,transparent 55%),radial-gradient(ellipse at 20% 80%,rgba(26,148,128,0.10) 0%,transparent 50%),repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.015) 39px,rgba(255,255,255,0.015) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,0.012) 39px,rgba(255,255,255,0.012) 40px);min-height:560px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:6px solid var(--teal)}
-    .hero::before{content:'';position:absolute;bottom:0;left:0;right:0;height:14px;background-image:repeating-linear-gradient(90deg,var(--black) 0px,var(--black) 14px,var(--white) 14px,var(--white) 28px);opacity:0.18}
-    .hero-skid{position:absolute;bottom:20px;left:-5%;width:110%;height:80px;background:repeating-linear-gradient(92deg,transparent 0px,transparent 60px,rgba(0,0,0,0.3) 60px,rgba(0,0,0,0.3) 68px);transform:skewX(-8deg);opacity:0.4}
-    .hero-content{text-align:center;z-index:2;padding:2rem;animation:fadeUp 0.8s ease both;display:flex;flex-direction:column;align-items:center}
+    .hero{
+      position:relative;overflow:hidden;
+      min-height:580px;display:flex;align-items:center;justify-content:center;
+      border-bottom:6px solid var(--teal);
+    }
+    .hero-bg{
+      position:absolute;inset:0;
+      background-image:url('mmdc_hero.jpg');
+      background-size:cover;background-position:center 40%;
+      transform:scale(1.03);
+      transition:transform 8s ease;
+    }
+    .page.active .hero-bg { transform:scale(1); }
+    /* dark gradient overlay — heavier at top for text legibility */
+    .hero-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(
+        to bottom,
+        rgba(10,22,18,0.72) 0%,
+        rgba(10,22,18,0.45) 50%,
+        rgba(10,22,18,0.75) 100%
+      );
+    }
+    /* teal tint bar at bottom */
+    .hero::before{content:'';position:absolute;bottom:0;left:0;right:0;height:14px;background-image:repeating-linear-gradient(90deg,var(--black) 0px,var(--black) 14px,var(--white) 14px,var(--white) 28px);opacity:0.2;z-index:2}
+    .hero-content{text-align:center;z-index:3;padding:2rem;animation:fadeUp 0.8s ease both;display:flex;flex-direction:column;align-items:center}
     @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-    .hero-logo{width:min(200px,50vw);height:auto;margin-bottom:1.5rem;mix-blend-mode:lighten;filter:brightness(1.08) drop-shadow(0 4px 28px rgba(26,148,128,0.4))}
-    .hero-eyebrow{font-family:'Special Elite',cursive;font-size:0.82rem;color:var(--teal-light);letter-spacing:5px;margin-bottom:0.5rem}
-    .hero-sub{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3.5vw,2rem);color:var(--smoke-light);letter-spacing:8px;margin-top:0.25rem}
-    .hero-tagline{font-family:'Special Elite',cursive;font-size:0.88rem;color:var(--smoke);margin-top:1rem;letter-spacing:2px}
+    .hero-eyebrow{font-family:'Special Elite',cursive;font-size:0.82rem;color:var(--teal-bright);letter-spacing:5px;margin-bottom:0.75rem;text-shadow:0 1px 6px rgba(0,0,0,0.6)}
+    .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,7rem);color:var(--white);letter-spacing:4px;line-height:0.9;text-shadow:3px 3px 0 var(--teal-dark),0 4px 24px rgba(0,0,0,0.5)}
+    .hero-sub{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,3vw,1.8rem);color:var(--teal-light);letter-spacing:8px;margin-top:0.75rem;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+    .hero-tagline{font-family:'Special Elite',cursive;font-size:0.9rem;color:rgba(255,255,255,0.75);margin-top:1rem;letter-spacing:2px}
     .hero-cta{margin-top:2.2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
     /* SPEC HOOK */
     .spec-hook{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:2rem;border:2px solid rgba(26,148,128,0.2);border-radius:2px;overflow:hidden}
@@ -144,11 +166,26 @@
     .seo-blurb p{font-family:'Special Elite',cursive;font-size:0.88rem;line-height:1.9;color:#3a4a48;margin-bottom:0.8rem}
     .seo-blurb strong{color:var(--teal-dark)}
     /* ABOUT PAGE */
-    .page-header{background-color:var(--deep);background-image:radial-gradient(ellipse at 30% 50%,rgba(26,148,128,0.18) 0%,transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(26,148,128,0.08) 0%,transparent 50%);padding:4rem 2rem 3.5rem;text-align:center;border-bottom:6px solid var(--teal);position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center}
-    .page-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:14px;background-image:repeating-linear-gradient(90deg,var(--black) 0px,var(--black) 14px,var(--white) 14px,var(--white) 28px);opacity:0.18}
-    .page-header img{width:min(200px,50vw);height:auto;mix-blend-mode:lighten;filter:brightness(1.08) drop-shadow(0 4px 20px rgba(26,148,128,0.4));margin-bottom:1.2rem}
-    .page-header .eyebrow{font-family:'Special Elite',cursive;font-size:0.8rem;color:var(--teal-light);letter-spacing:5px;margin-bottom:0.5rem}
-    .page-header h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,9vw,5.5rem);line-height:0.9;color:var(--white);letter-spacing:4px;text-shadow:3px 3px 0 var(--teal-dark)}
+    .page-header{
+      position:relative;overflow:hidden;
+      min-height:400px;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      border-bottom:6px solid var(--teal);
+      padding:4rem 2rem 3.5rem;text-align:center;
+    }
+    .page-header-bg{
+      position:absolute;inset:0;
+      background-image:url('mmdc_hero.jpg');
+      background-size:cover;background-position:center 35%;
+    }
+    .page-header-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to bottom,rgba(10,22,18,0.78) 0%,rgba(10,22,18,0.55) 50%,rgba(10,22,18,0.80) 100%);
+    }
+    .page-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:14px;background-image:repeating-linear-gradient(90deg,var(--black) 0px,var(--black) 14px,var(--white) 14px,var(--white) 28px);opacity:0.2;z-index:2}
+    .page-header img{display:none}
+    .page-header .eyebrow{font-family:'Special Elite',cursive;font-size:0.8rem;color:var(--teal-bright);letter-spacing:5px;margin-bottom:0.75rem;position:relative;z-index:3;text-shadow:0 1px 6px rgba(0,0,0,0.6)}
+    .page-header h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,9vw,5.5rem);line-height:0.9;color:var(--white);letter-spacing:4px;text-shadow:3px 3px 0 var(--teal-dark),0 4px 24px rgba(0,0,0,0.5);position:relative;z-index:3}
     .page-header h1 span{color:var(--teal-bright)}
     .about-section{max-width:900px;margin:0 auto;padding:3rem 1.25rem}
     .about-section-label{font-family:'Special Elite',cursive;font-size:0.75rem;color:var(--teal);letter-spacing:6px;margin-bottom:0.5rem}
@@ -230,7 +267,7 @@
         <img src="logo.jpg" alt="MMDC Logo">
         <div class="nav-logo-text">
           <span class="top">Est. Jackson Speedway</span>
-          <span class="main">Mid<span>Michigan</span> Drift</span>
+          <span class="main">Mid<span>Mich</span> Drift</span>
         </div>
       </div>
       <ul class="nav-links">
@@ -244,12 +281,13 @@
   <!-- EVENTS PAGE -->
   <div id="page-events" class="page active">
     <section class="hero">
-      <div class="hero-skid"></div>
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
       <div class="hero-content">
-        <img src="logo.jpg" alt="Mid Michigan Drift Club" class="hero-logo">
-        <p class="hero-eyebrow">✦ 2026 Season Schedule ✦</p>
-        <p class="hero-sub">Jackson Speedway · Michigan</p>
-        <p class="hero-tagline">Kids free. Adults $10. Zero regrets.</p>
+        <p class="hero-eyebrow">✦ 2026 Season · Jackson Speedway · Michigan ✦</p>
+        <h1 class="hero-title">Mid Michigan<br>Drift Club</h1>
+        <p class="hero-sub">MMDC</p>
+        <p class="hero-tagline">Kids free. Adults $15. Zero regrets.</p>
         <div class="hero-cta">
           <a href="#events-anchor" class="btn btn-primary">View Schedule</a>
           <a onclick="showPage('about')" class="btn btn-outline" style="cursor:pointer;">New Here? Start Here</a>
@@ -262,7 +300,7 @@
       <h2 class="section-title">Upcoming Events</h2>
 
       <div class="spec-hook">
-        <div class="spec-hook-item">🎟️ <span><strong>Under 18 always free</strong> Adults $10 admission</span></div>
+        <div class="spec-hook-item">🎟️ <span><strong>Under 18 always free</strong> Adults $15 admission</span></div>
         <div class="spec-hook-item">🅿️ <span><strong>Free parking</strong> at Jackson Speedway</span></div>
         <div class="spec-hook-item">🔓 <span><strong>Open paddock</strong> Walk right up to the cars</span></div>
         <div class="spec-hook-item">🍔 <span><strong>Food on site</strong> Rotating vendors or BYOF</span></div>
@@ -374,14 +412,14 @@
         <div class="firsttimer-text">
           <div class="firsttimer-label">✦ Never Been to a Drift Event? ✦</div>
           <h3>You'll wonder why it took you this long.</h3>
-          <p>Real cars. Real drivers. Smoke so thick you can smell it from the parking lot. Kids get in free, adults are $10, parking is always free — grab food from a rotating vendor or bring your own. It's a legit day out for the whole family.</p>
+          <p>Real cars. Real drivers. Smoke so thick you can smell it from the parking lot. Kids get in free, adults are $15, parking is always free — grab food from a rotating vendor or bring your own. It's a legit day out for the whole family.</p>
         </div>
         <a onclick="showPage('about')" class="btn btn-primary" style="cursor:pointer;">What to Expect →</a>
       </div>
 
       <div class="seo-blurb">
-        <h2>Michigan's Best Grassroots Drift Events — $10 Spectator Admission, Kids Free</h2>
-        <p>The Mid Michigan Drift Club runs the most active drift event series in the state of Michigan, with seven events at Jackson Speedway from March through November 2026. Whether you're a longtime car enthusiast or just looking for something wild to do on a weekend near Jackson, MI — spectator admission is just <strong>$10 for adults, free for kids under 18</strong>, with free parking every event. Rotating food vendors are on site, or bring your own — it's a full day out without the full-price bill.</p>
+        <h2>Michigan's Best Grassroots Drift Events — $15 Spectator Admission, Kids Free</h2>
+        <p>The Mid Michigan Drift Club runs the most active drift event series in the state of Michigan, with seven events at Jackson Speedway from March through November 2026. Whether you're a longtime car enthusiast or just looking for something wild to do on a weekend near Jackson, MI — spectator admission is just <strong>$15 for adults, free for kids under 18</strong>, with free parking every event. Rotating food vendors are on site, or bring your own — it's a full day out without the full-price bill.</p>
         <p>Our events range from beginner-friendly <strong>drift clinics</strong> to full open competition days, making MMDC the perfect entry point for anyone curious about grassroots motorsport in Michigan. Jackson Speedway sits at 3363 Page Ave in Jackson, MI — easy to reach from Lansing, Ann Arbor, and the greater mid-Michigan area.</p>
       </div>
     </div>
@@ -401,7 +439,8 @@
   <!-- ABOUT PAGE -->
   <div id="page-about" class="page">
     <div class="page-header">
-      <img src="logo.jpg" alt="Mid Michigan Drift Club">
+      <div class="page-header-bg"></div>
+      <div class="page-header-overlay"></div>
       <p class="eyebrow">✦ Michigan's Grassroots Drift Scene ✦</p>
       <h1>About <span>MMDC</span></h1>
     </div>
@@ -419,9 +458,9 @@
       <div class="audience-card spectator">
         <div class="audience-tag">✦ For Spectators ✦</div>
         <h2>You've Never Seen Anything Like This</h2>
-        <p>Drifting is the loudest, smokiest, most sideways thing happening in Michigan on a weekend — and it's one of the best-value days out you'll find. <strong>Kids under 18 get in free, adults are just $10.</strong> Walk the paddock, get close to the cars, and watch drivers push the limits in ways that will genuinely surprise you.</p>
+        <p>Drifting is the loudest, smokiest, most sideways thing happening in Michigan on a weekend — and it's one of the best-value days out you'll find. <strong>Kids under 18 get in free, adults are just $15.</strong> Walk the paddock, get close to the cars, and watch drivers push the limits in ways that will genuinely surprise you.</p>
         <ul class="audience-list">
-          <li>🎟️ Under 18 free · Adults $10 admission</li>
+          <li>🎟️ Under 18 free · Adults $15 admission</li>
           <li>🅿️ Free parking at Jackson Speedway</li>
           <li>🔓 Open paddock — walk right up to the cars</li>
           <li>🍔 Rotating food vendors on site — or bring your own</li>
@@ -451,7 +490,7 @@
         <div class="expect-card">
           <div class="expect-num">01</div>
           <h3>Show Up & Park</h3>
-          <p>Free parking at Jackson Speedway. Adults are $10 at the gate — kids under 18 always get in free. No pre-registration needed for spectators, just show up.</p>
+          <p>Free parking at Jackson Speedway. Adults are $15 at the gate — kids under 18 always get in free. No pre-registration needed for spectators, just show up.</p>
         </div>
         <div class="expect-card">
           <div class="expect-num">02</div>
@@ -487,7 +526,7 @@
       <div class="dual-cta-half">
         <div class="dual-cta-eyebrow">✦ Spectators ✦</div>
         <h2>Come Watch</h2>
-        <p>Kids free. Adults $10. Free parking. Food on site. Jackson Speedway all season long.</p>
+        <p>Kids free. Adults $15. Free parking. Food on site. Jackson Speedway all season long.</p>
         <a onclick="showPage('events')" class="btn btn-primary" style="cursor:pointer;">See the Schedule</a>
       </div>
       <div class="dual-cta-divider"></div>
@@ -519,7 +558,7 @@
       const navLink = document.getElementById('nav-' + page);
       if (navLink) navLink.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      history.pushState(null, '', '#' + page);
+      try { history.pushState(null, '', '#' + page); } catch(e) {}
     }
     window.addEventListener('popstate', function() {
       const hash = location.hash.replace('#', '') || 'events';
